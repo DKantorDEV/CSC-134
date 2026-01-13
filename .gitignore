@@ -1,0 +1,19 @@
+# C++ / Windows build outputs
+*.exe
+*.obj
+*.ilk
+*.pdb
+*.idb
+*.tlog
+*.log
+
+# Common build folders
+build/
+out/
+Debug/
+Release/
+x64/
+x86/
+
+# VS Code (optional)
+.vscode/ipch/
