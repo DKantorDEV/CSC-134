@@ -1,19 +1,80 @@
-# C++ / Windows build outputs
+####################################
+# OS files
+####################################
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+*.dSYM/
+*.dSYM/**
+
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+####################################
+# C / C++ build artifacts
+####################################
+
+# Compiled binaries
 *.exe
+*.out
+a.out
+
+# Object / intermediate files
+*.o
 *.obj
 *.ilk
-*.pdb
 *.idb
+*.pdb
 *.tlog
 *.log
 
-# Common build folders
+# Static / dynamic libs
+*.a
+*.lib
+*.so
+*.dylib
+*.dll
+
+####################################
+# Build directories
+####################################
+
 build/
 out/
 Debug/
 Release/
 x64/
 x86/
+cmake-build-*/
 
-# VS Code (optional)
+####################################
+# macOS-specific compiled binaries
+####################################
+
+# Lab executables (no extension)
+M1LAB_Kantor
+M2LAB_Kantor
+M3LAB_Kantor
+
+####################################
+# VS Code
+####################################
+
 .vscode/ipch/
+.vscode/*.log
+
+# Optional — keep if you do NOT want to share VS Code settings
+# .vscode/
+
+####################################
+# Misc
+####################################
+
+*.tmp
+*.swp
+*.bak
+*.cache
