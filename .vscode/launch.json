@@ -1,0 +1,26 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "C++: Run in Terminal",
+      "type": "node-terminal",
+      "request": "launch",
+      "command": "clang++ -g '${file}' -o '${fileDirname}/${fileBasenameNoExtension}' && '${fileDirname}/${fileBasenameNoExtension}'",
+      "cwd": "${workspaceFolder}"
+    },
+    {
+      "name": "C++ (LLDB) — run in integrated terminal",
+      "type": "cppdbg",
+      "request": "launch",
+      "program": "${fileDirname}/${fileBasenameNoExtension}",
+      "args": [],
+      "stopAtEntry": false,
+      "cwd": "${workspaceFolder}",
+      "environment": [],
+      "externalConsole": false,
+      "console": "integratedTerminal",
+      "MIMode": "lldb",
+      "preLaunchTask": "C/C++: build active file"
+    }
+  ]
+}
