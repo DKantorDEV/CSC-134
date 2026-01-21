@@ -28,4 +28,5 @@ int main() {
     double totalPrice = apples * pricePerApple;
     cout << "To purchase all these apples, it will be $" << totalPrice;
     cout << ".ssss" << endl;
+    return 0;
 }
