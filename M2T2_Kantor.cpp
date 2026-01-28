@@ -4,6 +4,7 @@
 // January 13, 2026
 
 #include <iostream>
+#include <iomanip>
 using namespace std;
 
 int main() {
@@ -13,7 +14,7 @@ int main() {
     double taxDouble = 1.08;
     double totalAmount = priceOfMeal * taxDouble;
 
-
+    cout << setprecision(2) << fixed << endl;
     cout << "Meal: Cheese Pizza" << endl;
     cout << "Price before Tax: $" << priceOfMeal << endl;
     cout << "Tax: " << taxInteger << "%" << endl;
