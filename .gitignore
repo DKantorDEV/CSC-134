@@ -78,3 +78,7 @@ M3LAB_Kantor
 *.swp
 *.bak
 *.cache
+# Python virtual environments
+/.venv/
+__pycache__/
+*.pyc
