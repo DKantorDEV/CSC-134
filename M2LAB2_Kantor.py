@@ -1,36 +1,58 @@
 import turtle
-# This is the window / GUI
-window = turtle.Screen()
-window.setup(width=600, height=600)
-window.bgcolor("black")
-window.title("CSC-134 Lab - D.K.")
 
-# This is the turtle/pen
-bob = turtle.Turtle()
-bob.shape("turtle")
-bob.color("red")
-bob.pensize(5)
-bob.speed(1)
+# The screen window parameters
+screen = turtle.Screen()
+screen.bgcolor("black")
+screen.setup(width=1200, height=600)
 
-# The "D" for my initials DK
-bob.left(90)       
-bob.forward(100)     
-bob.right(90)         
-bob.circle(-50, 180)  
+t = turtle.Turtle()
+t.speed(20)
+t.pensize(3)
 
-# This moves over to start the "K"
-bob.penup()          
-bob.goto(60, 0)      
-bob.setheading(90)   
-bob.pendown()         
+# Starting coordinates
+start_x = -450
+start_y = 120
 
-# The "K" for my initials DK
-bob.forward(100)     
-bob.backward(50)     
-bob.right(45)      
-bob.forward(70)    
-bob.backward(70)     
-bob.right(90)         
-bob.forward(70)      
+colors = ["red", "white", "blue"]
 
-window.exitonclick()
+# Loop through each color (3 lines total)
+for row, color in enumerate(colors):
+    t.color(color)
+    
+    # Resets the offset so not everything gets overlapped
+    offset = start_x
+    # Moves the next rows Y position lower
+    current_y = start_y - (row * 150)
+    
+    for i in range(6):
+        # Area to draw "D""
+        t.penup()
+        t.goto(offset, current_y)
+        t.setheading(90) # Always face up for "normal" look
+        t.pendown()
+
+        # Draw the "D"
+        t.forward(100)     
+        t.right(90)         
+        t.circle(-50, 180)  
+
+        # Area to draw "K"
+        t.penup()          
+        t.goto(offset + 70, current_y) 
+        t.setheading(90)   
+        t.pendown()         
+
+        # Draw the "K"
+        t.forward(100)     
+        t.backward(50)     
+        t.right(45)      
+        t.forward(70)    
+        t.backward(70)     
+        t.right(90)         
+        t.forward(70)
+
+        # Space between DK so not each one are overlapping
+        offset += 160
+
+t.hideturtle()
+screen.mainloop()
