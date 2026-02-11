@@ -55,11 +55,6 @@ cmake-build-*/
 # macOS-specific compiled binaries
 ####################################
 
-# Lab executables (no extension)
-M1LAB_Kantor
-M2LAB_Kantor
-M3LAB_Kantor
-
 ####################################
 # VS Code
 ####################################
@@ -82,3 +77,4 @@ M3LAB_Kantor
 /.venv/
 __pycache__/
 *.pyc
+.idea
