@@ -1,0 +1,568 @@
+/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\
+
+                EVERYTHING BELOW IS JUST MY PROMPTS TO GEMINI
+
+/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\
+
+FIRST PROMPT:
+I'm a first-year C++ programmer who just learned:
+- Variables and basic I/O
+- Functions (void functions, parameters)
+- If/else statements and switch cases
+
+I want to create a number guessing game that:
+1. Runs in the terminal (text-based)
+2. Uses multiple functions for organization
+3. Makes decisions with if statements
+4. Is fun to play repeatedly
+5. With hints and scoring
+6. Math Challenge - Arithmetic with difficulty levels
+7. Countdown - Reach target with operations
+8. Custom Number Game - Your mathematical creation
+
+Can you help me build this step-by-step? Start with the absolute 
+simplest version that works, then we can add features one at a time.
+
+Important: I need to understand each part, so please explain your 
+code choices and ask me questions to make sure I'm following along.
+
+
+SECOND PROMPT:
+This game needs to use 3 functions while running. I also want the ASCII art to represent the dice rolls to the user. With the score system, I want it to have multiple attempts/rounds so it can feel competetive.
+
+
+THIRD PROMPT: 
+Can you clarify to me how the point system works?
+
+
+FOURTH PROMPT:
+Explain/Clarify to me how the switch workings within void drawDice
+
+
+FIFTH PROMPT:
+What are the benefits of using a switch over if/else statements? When should I implement them instead of if/else statements?
+
+
+SIXTH PROMPT:
+What are 2 improvements you can recommend to me that would make this game much more enjoyable and runs smoother?
+
+
+SEVENTH PROMPT:
+Go ahead and implement those improvements and show me the C++ code please.
+
+
+
+
+
+
+/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\
+
+               EVERYTHING BELOW IS COPY AND PASTED FROM START TO END
+
+/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\
+
+
+I'm a first-year C++ programmer who just learned:
+
+- Variables and basic I/O
+
+- Functions (void functions, parameters)
+
+- If/else statements and switch cases
+
+
+
+I want to create a number guessing game that:
+
+1. Runs in the terminal (text-based)
+
+2. Uses multiple functions for organization
+
+3. Makes decisions with if statements
+
+4. Is fun to play repeatedly
+
+5. With hints and scoring
+
+6. Math Challenge - Arithmetic with difficulty levels
+
+7. Countdown - Reach target with operations
+
+8. Custom Number Game - Your mathematical creation
+
+
+
+Can you help me build this step-by-step? Start with the absolute
+
+simplest version that works, then we can add features one at a time.
+
+
+
+Important: I need to understand each part, so please explain your
+
+code choices and ask me questions to make sure I'm following along.
+
+Gemini said
+Welcome to the world of C++ game development! Building a terminal game is a fantastic way to solidify the basics you've just learned.
+
+Your feature list is awesome—adding math challenges, countdowns, and scoring will make this a really impressive project for a first-year programmer.
+
+Just as you requested, we are going to start with the absolute simplest version. Right now, we won't worry about random numbers, scoring, or replayability. We are just going to prove that we can take a guess from the user, compare it to a secret number, and use a function to keep our code organized.
+
+Here is Step 1. Take a look, and then read the explanation below it.
+
+Step 1: The Single-Guess Game
+C++
+#include <iostream>
+
+using namespace std;
+
+// Function declaration so main() knows this function exists
+void playGame(); 
+
+int main() {
+    cout << "Welcome to the Number Guessing Game!\n";
+    cout << "------------------------------------\n";
+    
+    // Calling our custom function
+    playGame(); 
+    
+    return 0;
+}
+
+// Function definition - where the actual game logic lives
+void playGame() {
+    int secretNumber = 7; // We are hardcoding the answer for now!
+    int userGuess;
+
+    cout << "I am thinking of a number between 1 and 10." << endl;
+    cout << "Enter your guess: ";
+    cin >> userGuess;
+
+    // Checking the user's input
+    if (userGuess == secretNumber) {
+        cout << "Amazing! You guessed it!" << endl;
+    } else {
+        cout << "Not quite! The secret number was " << secretNumber << "." << endl;
+    }
+}
+Why we did it this way:
+Organization: Notice how main() is very short? It just prints a welcome banner and calls playGame(). Putting your game logic inside playGame() means that later on, when we add those different math modes, we can just create new functions like playMathChallenge() and call them from main().
+
+Variables & I/O: We set up a variable for the user's input (userGuess) and populate it using cin >>.
+
+Decisions: We use a simple if/else statement with the equality operator (==) to check if they won or lost.
+
+Over to you!
+Before we move on to Step 2, I have two quick questions for you to make sure we are on the same page:
+
+Using your knowledge of if/else statements, how would you modify the code inside playGame() so that instead of just saying "Not quite", it gives the user a hint telling them if their guess was "Too high!" or "Too low!"? (Hint: you might need an else if)
+
+Have you learned about loops yet (like while loops or for loops)? We will need one of those to let the user guess multiple times until they get it right!
+
+Would you like to try writing out the code for the "Too high / Too low" hint, or should we talk about loops first?
+
+You said
+This game needs to use 3 functions while running. I also want the ASCII art to represent the dice rolls to the user. With the score system, I want it to have multiple attempts/rounds so it can feel competetive.
+
+Gemini said
+That is a brilliant pivot! Transforming the secret number into a dice roll makes the game much more visual and tactile.
+
+Since you want multiple rounds and a scoring system, it’s time to introduce loops. A loop allows us to repeat a block of code multiple times without rewriting it. To visualize how main() will use a loop to repeatedly call your other functions, take a look at this concept:
+
+We are also going to introduce random numbers because a dice game isn't very competitive if the dice always roll the same number!
+
+Here is Step 2. We are now using exactly 3 functions: main(), playRound(), and drawDice().
+
+Step 2: The Multi-Round Dice Game
+C++
+#include <iostream>
+#include <cstdlib> // We need this for the rand() function
+#include <ctime>   // We need this to get the current time
+
+using namespace std;
+
+// Function Declarations
+int playRound();
+void drawDice(int face);
+
+int main() {
+    // "Seeds" the random number generator using the current time
+    // so we get different rolls every time we play.
+    srand(time(0)); 
+    
+    int totalScore = 0;
+    int totalRounds = 3;
+
+    cout << "Welcome to the Dice Guessing Game!\n";
+    cout << "------------------------------------\n";
+
+    // This is a 'for' loop. It counts from 1 up to 'totalRounds'
+    for (int currentRound = 1; currentRound <= totalRounds; currentRound++) {
+        cout << "\n--- Round " << currentRound << " ---\n";
+        
+        // playRound() runs, and whatever score it returns gets added to totalScore
+        totalScore = totalScore + playRound(); 
+        
+        cout << "Your total score is now: " << totalScore << "\n";
+    }
+
+    cout << "\n====================================\n";
+    cout << "Game Over! Your final score is: " << totalScore << " out of " << (totalRounds * 10) << "!\n";
+    
+    return 0;
+}
+
+// Function 2: Handles the logic for a single round
+int playRound() {
+    // Generates a random number between 1 and 6
+    int diceRoll = (rand() % 6) + 1; 
+    int userGuess;
+
+    cout << "I am rolling a 6-sided die...\n";
+    cout << "What do you think it will land on? (1-6): ";
+    cin >> userGuess;
+
+    // Show the ASCII art!
+    cout << "The die shows:\n";
+    drawDice(diceRoll);
+
+    if (userGuess == diceRoll) {
+        cout << "Spot on! You earn 10 points.\n";
+        return 10; // This sends 10 back to main()
+    } else {
+        cout << "Oof, incorrect. Better luck next round.\n";
+        return 0;  // This sends 0 back to main()
+    }
+}
+
+// Function 3: Uses the 'switch' statement you learned to draw the dice
+void drawDice(int face) {
+    switch(face) {
+        case 1:
+            cout << " -------\n|       |\n|   o   |\n|       |\n -------\n";
+            break;
+        case 2:
+            cout << " -------\n| o     |\n|       |\n|     o |\n -------\n";
+            break;
+        case 3:
+            cout << " -------\n| o     |\n|   o   |\n|     o |\n -------\n";
+            break;
+        case 4:
+            cout << " -------\n| o   o |\n|       |\n| o   o |\n -------\n";
+            break;
+        case 5:
+            cout << " -------\n| o   o |\n|   o   |\n| o   o |\n -------\n";
+            break;
+        case 6:
+            cout << " -------\n| o   o |\n| o   o |\n| o   o |\n -------\n";
+            break;
+        default:
+            cout << "Invalid dice face!\n";
+    }
+}
+The Breakdown: What's New?
+The for Loop: In main(), we wrote for (int currentRound = 1; currentRound <= totalRounds; currentRound++). This translates to: "Start at round 1. Keep going as long as the round is less than or equal to 3. After every round, add 1 to the current round."
+
+Return Values: Notice how playRound() starts with int instead of void? That's because it calculates the points won in that round and returns them as an integer back to main(), which adds them to the totalScore.
+
+The switch Case: You mentioned learning switch cases! drawDice() is the perfect place to use them. Instead of a massive chain of if/else statements, it cleanly checks the face variable and prints the matching ASCII art.
+
+Randomness (rand()): We included <cstdlib> and <ctime>. The formula (rand() % 6) + 1 takes a massive random number, divides it by 6, takes the remainder (which will be 0-5), and adds 1 to simulate a 6-sided die.
+
+Over to you!
+Right now, if the user gets the dice roll wrong, they instantly fail the round. To add the Hints and Math Challenge features you wanted, we could give the user a second chance to guess if they get it wrong the first time, using a math hint like: "Wrong! The number is (Guess + 2)".
+
+Would you like me to show you how to add an inner while loop to playRound() so the user gets multiple attempts per round with hints, or do you have another feature in mind for Step 3?
+
+You said
+Can you clarify to me how the point system works?
+
+Gemini said
+Absolutely! The way points move between different functions is one of the biggest "aha!" moments in your first year of C++.
+
+It usually helps to break it down into two parts: how points are earned, and how points are kept.
+
+1. How points are earned (playRound)
+At the very top of the playRound() function, notice we used int playRound() instead of void playRound().
+
+void means a function does its job and finishes silently.
+
+int means when the function finishes, it must hand an integer back to whoever called it. This is done using the return keyword.
+
+Inside playRound(), we have our if/else statement:
+
+C++
+    if (userGuess == diceRoll) {
+        cout << "Spot on! You earn 10 points.\n";
+        return 10; // The function finishes and hands back the number 10
+    } else {
+        cout << "Oof, incorrect. Better luck next round.\n";
+        return 0;  // The function finishes and hands back a 0
+    }
+Note: A common beginner trap is thinking cout sends data to the rest of the program. cout only sends text to the human looking at the screen. return is what actually sends data to the rest of your code!
+
+2. How points are kept (main)
+In main(), we have a variable called totalScore that starts at 0. Think of totalScore like a bucket.
+
+Inside our for loop, we have this line of code:
+
+C++
+totalScore = totalScore + playRound();
+When C++ reads this line, it pauses main() and runs playRound().
+Once the player makes their guess, playRound() finishes and literally turns into the number it returned.
+
+So, if the player guessed correctly, the code effectively becomes:
+totalScore = totalScore + 10;
+
+If they guessed wrong, it becomes:
+totalScore = totalScore + 0;
+
+It does this 3 times (since our loop runs 3 times), adding the results to the bucket each time!
+
+Over to you!
+Right now, the scoring is pretty strict: you either get 10 points or 0 points.
+
+Since you want to add Hints and Multiple Attempts, we could change the system so that you get 10 points for guessing it on the first try, 5 points if you need a hint and get it on the second try, and 0 if you fail completely.
+
+Would you like me to show you how to add a while loop inside playRound() so the user gets multiple tries and hints, or does that scoring explanation bring up any other questions?
+
+You said
+Explain/Clarify to me how the switch workings within void drawDice
+
+Gemini said
+Great question! The switch statement is one of the cleanest ways to handle multiple specific outcomes. If you have a single variable (like a dice roll) that can only be a few exact values, switch is much neater than writing a massive chain of if / else if / else if statements.
+
+Think of a switch statement like a train track switch that routes your program down a specific path based on the value of a single variable.
+
+Here is a breakdown of exactly how it operates inside our drawDice function:
+
+1. The Setup: switch(face)
+When we call drawDice(diceRoll) inside our game, the random number (let's say it's a 3) gets passed into the function and is temporarily named face.
+
+The switch(face) line tells the computer: "Look at the integer inside the variable face. We are going to make a decision based on this exact number."
+
+2. The Destinations: case 3:
+The computer scans downward until it finds the case that perfectly matches the value of face. Since we rolled a 3, it skips case 1: and case 2:, and jumps straight into case 3:.
+It then executes the cout statement to draw the ASCII art for a 3.
+
+3. The Exit: break;
+This is arguably the most important part of a switch statement, and a classic trap for first-year programmers!
+
+Once the computer prints the dice art, it hits the break; command. This tells the computer: "Stop! You are done with this switch statement. Break out of the curly braces { } entirely." If you forget to write break;, C++ will do something called "falling through". It would print the art for a 3, and then blindly continue downward, printing the art for a 4, a 5, and a 6 until it hits the end of the switch!
+
+4. The Catch-All: default:
+At the very bottom, we have default:. This acts exactly like the final else in an if/else chain. If, for some bizarre reason, the face variable equals a 9 or a -2, the computer won't find a matching case. Instead, it will fall back to default: and print "Invalid dice face!" to prevent the program from crashing or failing silently.
+
+Over to you!
+Now that you've mastered how main() loops the rounds, how points are passed around using return, and how switch draws the dice, we have a fully functional (but basic) game foundation.
+
+We are perfectly positioned to add those Multiple Attempts and Hints you wanted. To do this, we'll put a while loop inside playRound() so the user can keep guessing if they get it wrong the first time.
+
+Would you like me to rewrite playRound() to include a 3-try limit with "too high" or "too low" hints, or is there another feature from your list you want to tackle next?
+
+You said
+What are the benefits of using a switch over if/else statements? When should I implement them instead of if/else statements?
+
+Gemini said
+That is a fantastic question. Learning how a tool works is step one, but knowing when to use it is what separates a beginner from a real programmer!
+
+At first glance, switch and if/else seem to do the exact same thing: they make decisions. However, they are built for entirely different scenarios.
+
+Here is a breakdown of why and when you should choose one over the other:
+
+1. The Benefits of switch
+Readability: If you have more than three exact outcomes to check, a switch statement is significantly easier for a human to read. An if / else if / else if / else chain gets very cluttered with brackets and repeated variable names.
+
+Performance (The "Jump Table"): This is a cool under-the-hood C++ fact! When you write a long if/else chain, the computer evaluates them one by one, from top to bottom. If the correct answer is at the very bottom, it wastes time checking all the wrong answers first. A switch statement, however, is often optimized by the compiler into a "jump table." The computer calculates exactly where the correct case lives in memory and instantly jumps there, skipping all the wrong answers.
+
+2. When to use switch
+The Rule: Use switch when you are checking one single variable against exact, constant values (specifically integers, characters, or enums).
+
+Perfect scenarios for switch:
+
+Main Menus: User presses '1' for Play, '2' for Options, '3' for Quit.
+
+Dice Rolls: The face is exactly 1, 2, 3, 4, 5, or 6.
+
+Keyboard Movement: The user presses exactly 'w', 'a', 's', or 'd'.
+
+3. When to use if/else
+The Rule: Use if/else when you are checking ranges, multiple conditions at once, or strings. switch cannot do any of these things in C++.
+
+Perfect scenarios for if/else:
+
+Ranges (Inequalities): Checking if score > 90 (A grade), or userGuess > diceRoll (Too high!). A switch cannot check "greater than" or "less than".
+
+Multiple Variables: if (playerIsAlive == true && ammo > 0). A switch can only look at one variable at a time.
+
+Strings: if (userName == "Player1"). In C++, you cannot use a switch statement on standard strings.
+
+Bringing it back to your game!
+This is exactly why we used a switch for drawing the dice in Step 2: the face variable was a single integer checking for exact numbers (1 through 6).
+
+However, to add the Hints you wanted for Step 3, we must use if/else statements. We need to check ranges: if the guess is < the roll, say "Too low!", and if it is > the roll, say "Too high!".
+
+Are you ready to use if/else to add those "Too high / Too low" hints and give the player 3 attempts per round using a while loop? Let me know if you want to see the code for Step 3!
+
+You said
+What are 2 improvements you can recommend to me that would make this game much more enjoyable and runs smoother?
+
+Gemini said
+To make your game run smoother (technically robust) and much more enjoyable (better gameplay), here are the top two improvements I highly recommend for our next step. These are classic milestones for every first-year C++ student!
+
+1. Make it Run Smoother: Input Validation
+Right now, your game has a hidden technical flaw that is very common in beginner C++ programs. What happens if the game asks for a number between 1 and 6, and the user accidentally types the letter "A" or the word "five"?
+
+Because userGuess is an int (integer), passing it a letter breaks the cin input stream. The game will likely enter an infinite, uncontrollable loop of printing text to the terminal!
+
+The Fix: We can implement "Input Validation." This uses a while loop to trap the user until they give us what we want.
+
+We can use tools like cin.fail() to check if the user typed a letter instead of a number. If they did, we clear the error, ignore the bad input, and politely ask them to try again. This prevents crashes and makes your program feel professional and unbreakable.
+
+2. Make it More Enjoyable: The Guessing Loop (Lives & Hints)
+From a gameplay perspective, rolling a 6-sided die and only getting one guess means the player has an 83% chance of losing the round immediately. That relies entirely on luck, which can get frustrating.
+
+The Fix: As we touched on earlier, we can make the game skill-based by adding an inner while loop to playRound().
+
+Lives: We give the player 3 attempts per round.
+
+Hints: We use if / else if statements to check ranges. If they guess 2, and the roll is 5, the game tells them: "Too low! Try again."
+
+Dynamic Scoring: We can change the scoring so they get 10 points if they guess it on the first try, 5 points on the second try, and 2 points on the third try.
+
+This transforms the round from a blind guess into a strategic puzzle, which completely aligns with the "Hints and Scoring" feature on your original list!
+
+Would you like to tackle Input Validation first so our game is crash-proof, or should we build the Guessing Loop so you can see how the hints and multiple lives work?
+
+You said
+Go ahead and implement those improvements and show me the C++ code please.
+
+Gemini said
+This is where your game transforms from a basic script into a genuinely fun, interactive, and robust application!
+
+By combining Input Validation and a Guessing Loop, we are crossing off #4 (Fun to play repeatedly) and #5 (Hints and scoring) from your original feature list.
+
+Here is Step 3. I have added comments starting with // NEW: so you can spot exactly what changed in playRound().
+
+Step 3: Loops, Lives, and Logic
+C++
+#include <iostream>
+#include <cstdlib>
+#include <ctime>
+#include <limits> // NEW: We need this library for our input validation
+
+using namespace std;
+
+int playRound();
+void drawDice(int face);
+
+int main() {
+    srand(time(0)); 
+    int totalScore = 0;
+    int totalRounds = 3;
+
+    cout << "Welcome to the Enhanced Dice Guessing Game!\n";
+    cout << "-------------------------------------------\n";
+
+    for (int currentRound = 1; currentRound <= totalRounds; currentRound++) {
+        cout << "\n--- Round " << currentRound << " ---\n";
+        totalScore = totalScore + playRound(); 
+        cout << "Your total score is now: " << totalScore << "\n";
+    }
+
+    cout << "\n===========================================\n";
+    cout << "Game Over! Your final score is: " << totalScore << "!\n";
+    
+    return 0;
+}
+
+int playRound() {
+    int diceRoll = (rand() % 6) + 1; 
+    int userGuess;
+    int attemptsLeft = 3; // NEW: The player now has 3 lives
+
+    cout << "I rolled a 6-sided die. You have 3 attempts to guess it!\n";
+
+    // NEW: The Guessing Loop. This keeps running as long as they have lives.
+    while (attemptsLeft > 0) {
+        cout << "\nAttempts left: " << attemptsLeft << "\n";
+        cout << "Enter your guess (1-6): ";
+        cin >> userGuess;
+
+        // NEW: Input Validation (Crash Prevention!)
+        if (cin.fail()) {
+            cin.clear(); // Clears the error state so cin works again
+            // Discards the bad text the user typed in
+            cin.ignore(numeric_limits<streamsize>::max(), '\n'); 
+            cout << "Invalid input! Please type a number, not a letter.\n";
+            continue; // Jumps instantly back to the top of the 'while' loop
+        }
+
+        // NEW: Bounds checking
+        if (userGuess < 1 || userGuess > 6) {
+            cout << "Out of bounds! Please guess between 1 and 6.\n";
+            continue; 
+        }
+
+        // NEW: Hints and Dynamic Scoring
+        if (userGuess == diceRoll) {
+            cout << "Spot on! The die shows:\n";
+            drawDice(diceRoll);
+            
+            // Score depends on how many attempts it took
+            if (attemptsLeft == 3) {
+                cout << "First try! +10 points.\n";
+                return 10;
+            } else if (attemptsLeft == 2) {
+                cout << "Second try! +5 points.\n";
+                return 5;
+            } else {
+                cout << "Close call! +2 points.\n";
+                return 2;
+            }
+        } 
+        else if (userGuess < diceRoll) {
+            cout << "Too low!\n";
+        } 
+        else { // If it's not correct and not too low, it must be too high!
+            cout << "Too high!\n";
+        }
+
+        // NEW: If they made it here, they guessed wrong. Subtract 1 life.
+        attemptsLeft--; 
+    }
+
+    // NEW: If the 'while' loop finishes and hits this code, they ran out of lives.
+    cout << "\nOut of attempts! The correct roll was:\n";
+    drawDice(diceRoll);
+    return 0; 
+}
+
+void drawDice(int face) {
+    // (This remains exactly the same as Step 2)
+    switch(face) {
+        case 1: cout << " -------\n|       |\n|   o   |\n|       |\n -------\n"; break;
+        case 2: cout << " -------\n| o     |\n|       |\n|     o |\n -------\n"; break;
+        case 3: cout << " -------\n| o     |\n|   o   |\n|     o |\n -------\n"; break;
+        case 4: cout << " -------\n| o   o |\n|       |\n| o   o |\n -------\n"; break;
+        case 5: cout << " -------\n| o   o |\n|   o   |\n| o   o |\n -------\n"; break;
+        case 6: cout << " -------\n| o   o |\n| o   o |\n| o   o |\n -------\n"; break;
+        default: cout << "Invalid dice face!\n";
+    }
+}
+The Breakdown: How it works
+The while Loop: Think of while (attemptsLeft > 0) like a revolving door. As long as that variable is 1, 2, or 3, the door keeps spinning. We put attemptsLeft--; at the very bottom so they lose a life after every wrong guess.
+
+Input Validation (cin.fail): When cin expects an int but gets the letter "A", it panics and sets a "fail flag."
+
+We use cin.clear() to turn that flag off, and cin.ignore(...) to sweep the garbage text "A" out of the computer's memory. The continue command then forces the loop to restart so the user can try again without losing a life!
+
+The continue Command: This is a fantastic tool inside loops. It immediately stops executing the current loop cycle and jumps all the way back up to the while(...) condition at the top.
+
+Dynamic Scoring: Notice how the function returns immediately if they guess right. If attemptsLeft is 3, it returns 10. This instantly destroys the playRound function and exits the loop. The code at the bottom (subtracting lives or printing "Out of attempts!") never even runs if they win early.
+
+Over to you!
+Take a moment to run this mentally or compile it. Try entering letters, numbers over 6, and wrong guesses to see how the logic traps you safely and guides you to the right answer.
+
+We've now successfully built out the foundation of your game! Looking at your original list, feature #6 is "Math Challenge - Arithmetic with difficulty levels." Would you like me to help you design a brand new function, perhaps called playMathChallenge(), that randomly generates an addition or subtraction problem instead of a dice roll?
