@@ -1,3 +1,7 @@
+// CSC-134
+// Daniel Kantor
+// March 2, 2026
+
 #include <iostream>
 #include <cstdlib>
 #include <ctime>
