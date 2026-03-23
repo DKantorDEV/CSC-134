@@ -55,6 +55,9 @@ cmake-build-*/
 # macOS-specific compiled binaries
 ####################################
 
+# Extensionless compiled C++ binaries (e.g. M4T1_Kantor, M5T2_Kantor)
+*_Kantor
+
 ####################################
 # VS Code
 ####################################
