@@ -1,0 +1,14 @@
+CLAUDE AI
+
+Prompt 1: I will ask you to create something for me, you will write
+          the code in c++ and input the code into M7HW1_Kantor.cpp.
+          I will also require you to insert every prompt I give you,
+          organized into M7HW1_Prompts.txt. Understand?
+
+Prompt 2: I just did, include the one above and this, and so on...
+
+Prompt 3: I request that you create an ASCII program that can create
+          whatever shape I ask the program to do.
+
+Prompt 4: Well done, this was perfect. Now make it so the .txt file
+          wraps the text into the file and doesn't continue endlessly.
