@@ -16,7 +16,6 @@ class Rectangle {
         return length;
      }
      double getArea() const {
-        // always calculated fresh
         double area = length * width;
         return area; 
      }
@@ -27,7 +26,7 @@ class Rectangle {
         length = l;
      }
      void drawRectangle() {
-        std::string pixel = "* "; // use whatever
+        std::string pixel = "* ";
         for (int i=0; i< length; i++) {
             for (int j=0; j<width; j++) {
                 std::cout << pixel;
@@ -36,4 +35,4 @@ class Rectangle {
         }
      }
 };
-#endif // RECTANGLE_H
+#endif

@@ -1,7 +1,7 @@
 // CSC-134
 // Daniel Kantor
 // May 4, 2026
-// 
+// GOLD
 
 #include <iostream>
 #include "Rectangle.h"
@@ -12,17 +12,12 @@ string setName();
 void setName(string& name);
 
 int main() {
-    // Pointer practice
-    // & is Reference (get the address of the data)
-    // * is Dereference (get the data from the address)
     string name = "Bob";
-    string * pName = &name;     // store the address in a pointer
-    //setName(name);
+    string * pName = &name;
     cout << "name   = " << name << endl;
     cout << "pName  = " << pName << endl;
     cout << "*pName = " << *pName << endl;
 
-    // PART 2 - Rectangles
     Rectangle r1;
     double w, l;
     cout << "Enter width and length, separated by a space: ";
@@ -34,13 +29,14 @@ int main() {
 
 
 }
-// Full Functions
+
 string setName() {
     string name;
     cout << "Enter name: ";
     cin >> name;
     return name;
 }
+
 void setName(string& name) {
     cout << "Enter name: ";
     cin >> name;
